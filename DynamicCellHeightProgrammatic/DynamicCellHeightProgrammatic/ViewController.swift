@@ -44,7 +44,7 @@ extension ViewController : UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableview.dequeueReusableCell(withIdentifier: bookCellReuseIdentifier, for: indexPath) as! BookTableViewCell
         let book = bookList[(indexPath as NSIndexPath).row]
-        cell.configureCellCon(botones: 5, titulo: book.name, texto: book.details)
+        cell.configureCellCon(botones: 5, titulo: book.name, book: book)
         cell.tag = indexPath.row
         
         return cell

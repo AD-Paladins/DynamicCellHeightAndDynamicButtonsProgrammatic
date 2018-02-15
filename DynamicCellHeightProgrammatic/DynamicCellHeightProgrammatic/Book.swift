@@ -7,15 +7,22 @@
 //
 
 import UIKit
+struct ButtonAtributes {
+    let title: String
+    let message: String
+}
 
 class Book: NSObject {
-    
+    let type: String
     let name: String
     let details: String
+    let buttonsAttibutes: [ButtonAtributes]
     
-    init(name: String, details: String) {
+    init(type: String, name: String, details: String, buttonsAttibutes: [ButtonAtributes] ) {
         self.name = name
         self.details = details
+        self.type = type
+        self.buttonsAttibutes = buttonsAttibutes
     }
     
 }
