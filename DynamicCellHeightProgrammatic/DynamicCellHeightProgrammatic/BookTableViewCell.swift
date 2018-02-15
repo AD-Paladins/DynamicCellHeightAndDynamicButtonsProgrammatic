@@ -67,6 +67,7 @@ class BookTableViewCell: UITableViewCell {
                 ])
             button.topAnchor.constraint(equalTo: detailLabel.bottomAnchor).isActive = true
             button.bottomAnchor.constraint(equalTo: marginGuide.bottomAnchor).isActive = true
+            button.addTarget(self, action:#selector(mostrarMensaje), for:.touchUpInside)
             return
         }else if(book.buttonsAttibutes.count == 0) {
             detailLabel.bottomAnchor.constraint(equalTo: marginGuide.bottomAnchor).isActive = true
@@ -128,16 +129,16 @@ class BookTableViewCell: UITableViewCell {
     }
     
     @objc func mostrarMensaje(sender: UIButton){
-        print( "Cell: \(self.tag) -- Button: \(sender.tag) Clicked!")
+//        let title = self.book.buttonsAttibutes[sender.tag].title
         let message = self.book.buttonsAttibutes[sender.tag].message
-        let alertController = UIAlertController(title: "Cell: \(self.tag)", message: "Button: \(sender.tag) Clicked!\nMessage: \(message)", preferredStyle: UIAlertControllerStyle.alert)
+        let alertController = UIAlertController(title: "\(self.book.name)", message: message, preferredStyle: UIAlertControllerStyle.alert)
         let okAction = UIAlertAction(title: "Cerrar", style: UIAlertActionStyle.default) {
             (result : UIAlertAction) -> Void in
         }
         
         alertController.addAction(okAction)
         if let myViewController = parentViewController {
-            print(myViewController.title ?? "ViewController sin título.")
+            print(myViewController.title ?? "ViewController without title.")
             myViewController.present(alertController, animated: true, completion: nil)
         }
     }
